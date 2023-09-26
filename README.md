@@ -1,7 +1,7 @@
 # MicroPython Automation using CoolTerm and Sublime Text
 
 ## Introduction
-I wanted to create a *macOS* automated build for *MicroPython*, where I could use the Build system in *Sublime Text* with the *Applescript* capability of *CoolTerm*. This enabled me to automate the following:
+I created a *macOS* automated build for *MicroPython*, where I use the Build system in *Sublime Text* with the *Applescript* capability of *CoolTerm*. This enabled me to automate the following:
 1. Disconnect *CoolTerm* from the serial port
 1. Upload a file to the *MicroPython* board and reset the board
 1. Reconnect *CoolTerm* and activate *CoolTerm* for interaction with the *MicroPython* board.
@@ -13,7 +13,7 @@ I recommend the [three window programming setup](/posts/avr_c_edit/) as well. Wh
 
 1. Edit the file in *Sublime Text*
 1. Switch to *CoolTerm* and disconnect it from the board (*CMD-k*) 
-1. Switch *CLI* to use *mpremote* to upload the file (*mpremote fs cp filename :main.py*)
+1. Switch to *CLI* to use *mpremote* to upload the file (*mpremote fs cp filename :main.py*)
 1. Switch back to *CoolTerm* to reconnect (*CMD-k*) and view output
 1. Press reset button on Pico to automatically execute *main.py*
 
@@ -34,7 +34,7 @@ The simple installation method is:
 1. Copy the two script files to ~/bin/
 1. Copy the *MicroPython.sublime-build* file to the User folder in Sublime Text->Settings->Browse Packages
 1. In *Sublime Text*, be sure to check *Tools->Build System->MicroPython*. If this option doesn't appear after copying the file, restart *Sublime Text*
-1. Use *Tools->Build With...* to show the three options, the first option explains the two variants, the first one will copy the current file to *main.py* on the *MicroPython* board, the second will retain the existing name.
+1. Use *Tools->Build With...* to show the three options, the first option explains the two variants, the first variant will copy the current file to *main.py* on the *MicroPython* board, the second will retain the existing name. Use the down arrow to select the variant then hit *Return*
 
 ## Installation with Explanations
 ### CoolTerm
@@ -44,7 +44,7 @@ The best method of creating these two files is:
 1. Copy and past the text below
 1. Save the files with the titles as names, where ScriptEditor wishes to save them, typically iCloud/Script Editor folder
 1. Copy them to a location where you keep local automation. For me, I have a folder called bin as in *~/bin* and I copy the two files there
-#### CoolTerm Disconnect
+#### CoolTerm_disconnect.scpt
 ```Applescript
 # Disconnect CoolTerm from Board
 
@@ -65,7 +65,7 @@ tell application "CoolTerm"
 end tell
 ```
 
-#### CoolTerm Connect
+#### CoolTerm_connect.scpt
 ```Applescript
 use AppleScript version "2.4" -- Yosemite (10.10) or later
 use scripting additions
