@@ -1,0 +1,17 @@
+{
+	"shell_cmd": "echo \" Use main to upload to main.py and same to retain filename\" ",
+
+	"variants":
+	[
+		{
+			"name": "CoolTerm main",
+			"shell_cmd": "osascript ~/bin/CoolTerm_disconnect.scpt && mpremote cp $file :main.py && mpremote reset && osascript ~/bin/CoolTerm_connect.scpt"
+		},
+		{
+			"name": "CoolTerm same",
+			"shell_cmd": "osascript ~/bin/CoolTerm_disconnect.scpt && mpremote cp $file :$file_name && mpremote reset && osascript ~/bin/CoolTerm_connect.scpt"
+		}
+
+	]
+
+}
