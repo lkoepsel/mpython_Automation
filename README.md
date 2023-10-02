@@ -26,13 +26,19 @@ This automation requires the *MicroPython* utility, [*mpremote*](https://pypi.or
 If you aren't already using *CoolTerm* then download [CoolTerm](https://freeware.the-meiers.org/) - multi-platform serial monitor **ONLY DOWNLOAD FROM THIS SITE:** https://freeware.the-meiers.org/
 You will want to add two *CoolTerm* *Applescript* commands and allow the two scripts to interact with CoolTerm (do this via *System Preferences*)
 
-**AND** when after downloading *CoolTerm*, please take one more step to confirm the image is the proper one. Roger Meier has done a great job in providing the [checksums for the latest release](http://forums.the-meiers.org/viewtopic.php?p=2068&sid=2931b7c911099c94e20911aa455d511e#p2068). Please do the following and confirm your downloaded image checksum matches the proper one on the list in the forums:
-#### macOS and Linux example 
+**AND** after downloading *CoolTerm*, please take one more step to confirm the image is the proper one. Roger Meier has done a great job in providing the [checksums for the latest release](http://forums.the-meiers.org/viewtopic.php?p=2068&sid=2931b7c911099c94e20911aa455d511e#p2068). 
+
+Please do the following and confirm your downloaded image checksum matches the proper one on the list in the forums:
+1) Copy the appropriate hash based on your download from the [forums page](http://forums.the-meiers.org/viewtopic.php?p=2068&sid=2931b7c911099c94e20911aa455d511e#p2068).
+2) Run the appropriate command to generate a hash on the downloaded program
+3) Use the Python REPL to confirm they are identical (*examples below*)
+### macOS and Linux example 
 ```bash
 openssl sha256 /Users/lkoepsel/Downloads/CoolTermMac.dmg
 SHA2-256(/Users/lkoepsel/Downloads/CoolTermMac.dmg)= 7972a2cc93d1a4ae25c5018f81c951d21930032d9ea51fa1e680ea53c6c860fb
 
-# a very simple way to test
+# Confirm using Python REPL
+# d = hash of downloaded file, r = hash from Roger's forums page, answer must be True
 python3
 Python 3.11.5 (main, Aug 24 2023, 15:09:45) [Clang 14.0.3 (clang-1403.0.22.14.1)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
@@ -44,8 +50,28 @@ True
 ```
 **Note that the checksum generated matches exactly the checksum in the link!**
 
-Windows version soon...
+### Windows
+For *Windows*, the command is different, however the process would be similar. The below example was run in Git Bash:
 
+```bash
+$ certutil -hashfile '/c/Users/Lief Koepsel/Downloads/CoolTermWin64Bit.zip' SHA256
+SHA256 hash of C:/Users/Lief Koepsel/Downloads/CoolTermWin64Bit.zip:
+70bd44f868834b14c3fbf18eced7b3563ca44f69d3422009681affb1a5c8c641
+CertUtil: -hashfile command completed successfully.
+
+# Confirm using Python REPL
+# d = hash of downloaded file, r = hash from Roger's forums page, answer must be True
+$ python -i
+Python 3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> d = "70bd44f868834b14c3fbf18eced7b3563ca44f69d3422009681affb1a5c8c641"
+>>> r = "70bd44f868834b14c3fbf18eced7b3563ca44f69d3422009681affb1a5c8c641"
+>>> r == d
+True
+>>>
+```
+
+Once you have confirmed the hashes are identical, install CoolTerm and enjoy!
 
 ### Sublime Text
 For code editing use [Sublime Text](https://www.sublimetext.com), because it has this great build automation process.
