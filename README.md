@@ -26,6 +26,27 @@ This automation requires the *MicroPython* utility, [*mpremote*](https://pypi.or
 If you aren't already using *CoolTerm* then download [CoolTerm](https://freeware.the-meiers.org/) - multi-platform serial monitor **ONLY DOWNLOAD FROM THIS SITE:** https://freeware.the-meiers.org/
 You will want to add two *CoolTerm* *Applescript* commands and allow the two scripts to interact with CoolTerm (do this via *System Preferences*)
 
+**AND** when after downloading *CoolTerm*, please take one more step to confirm the image is the proper one. Roger Meier has done a great job in providing the [checksums for the latest release](http://forums.the-meiers.org/viewtopic.php?p=2068&sid=2931b7c911099c94e20911aa455d511e#p2068). Please do the following and confirm your downloaded image checksum matches the proper one on the list in the forums:
+#### macOS and Linux example 
+```bash
+openssl sha256 /Users/lkoepsel/Downloads/CoolTermMac.dmg
+SHA2-256(/Users/lkoepsel/Downloads/CoolTermMac.dmg)= 7972a2cc93d1a4ae25c5018f81c951d21930032d9ea51fa1e680ea53c6c860fb
+
+# a very simple way to test
+python3
+Python 3.11.5 (main, Aug 24 2023, 15:09:45) [Clang 14.0.3 (clang-1403.0.22.14.1)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> r = '7972a2cc93d1a4ae25c5018f81c951d21930032d9ea51fa1e680ea53c6c860fb'
+>>> d = '7972a2cc93d1a4ae25c5018f81c951d21930032d9ea51fa1e680ea53c6c860fb'
+>>> r == d
+True
+>>>
+```
+**Note that the checksum generated matches exactly the checksum in the link!**
+
+Windows version soon...
+
+
 ### Sublime Text
 For code editing use [Sublime Text](https://www.sublimetext.com), because it has this great build automation process.
 
